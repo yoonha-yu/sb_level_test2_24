@@ -77,7 +77,7 @@ public class ArticleController {
     public String articleDelete(Principal principal, @PathVariable("id") Integer id){
         Article article = this.articleService.getArticle(id);
         if(!article.getAuthor().getUsername().equals(principal.getName())){
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST,"삭재권한이 없습니다.");
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST,"삭제권한이 없습니다.");
         }
         this.articleService.delete(article);
         return "redirect:/";
